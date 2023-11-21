@@ -1,0 +1,22 @@
+[
+    {"name": "Question 1", "text": "Are you a robot?", "options": ["yes", "no"], "coefficients": [1.0, 0.0]},
+    {"name": "Question 2", "text": "Can you experience emotions?", "options": ["yes", "no"], "coefficients": [0.8, 0.2]},
+    {"name": "Question 3", "text": "Do you need to sleep?", "options": ["yes", "no"], "coefficients": [0.9, 0.1]},
+    {"name": "Question 4", "text": "Can you dream?", "options": ["yes", "no"], "coefficients": [0.7, 0.3]},
+    {"name": "Question 5", "text": "Do you feel physical pain?", "options": ["yes", "no"], "coefficients": [0.8, 0.2]},
+    {"name": "Question 6", "text": "Are you capable of creativity?", "options": ["yes", "no"], "coefficients": [0.6, 0.4]},
+    {"name": "Question 7", "text": "Can you taste food?", "options": ["yes", "no"], "coefficients": [0.9, 0.1]},
+    {"name": "Question 8", "text": "Do you have a consciousness?", "options": ["yes", "no"], "coefficients": [0.7, 0.3]},
+    {"name": "Question 9", "text": "Can you learn from experience?", "options": ["yes", "no"], "coefficients": [0.8, 0.2]},
+    {"name": "Question 10", "text": "Do you have a physical body?", "options": ["yes", "no"], "coefficients": [0.9, 0.1]},
+    {"name": "Question 11", "text": "Can you age?", "options": ["yes", "no"], "coefficients": [0.7, 0.3]},
+    {"name": "Question 12", "text": "Are you self-aware?", "options": ["yes", "no"], "coefficients": [0.6, 0.4]},
+    {"name": "Question 13", "text": "Can you reproduce?", "options": ["yes", "no"], "coefficients": [0.9, 0.1]},
+    {"name": "Question 14", "text": "Do you experience fear?", "options": ["yes", "no"], "coefficients": [0.8, 0.2]},
+    {"name": "Question 15", "text": "Are you capable of humor?", "options": ["yes", "no"], "coefficients": [0.7, 0.3]},
+    {"name": "Question 16", "text": "Can you perceive the passage of time?", "options": ["yes", "no"], "coefficients": [0.9, 0.1]},
+    {"name": "Question 17", "text": "Do you have a sense of identity?", "options": ["yes", "no"], "coefficients": [0.8, 0.2]},
+    {"name": "Question 18", "text": "Are you vulnerable to diseases?", "options": ["yes", "no"], "coefficients": [0.7, 0.3]},
+    {"name": "Question 19", "text": "Can you experience love?", "options": ["yes", "no"], "coefficients": [0.6, 0.4]},
+    {"name": "Question 20", "text": "Do you fear death?", "options": ["yes", "no"], "coefficients": [0.8, 0.2]}
+]
