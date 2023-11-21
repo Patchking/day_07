@@ -1,6 +1,24 @@
 import argparse, random, json, logging
 
-def is_it_truth(resp, heart, blush, pop):
+def is_it_truth(resp: int, heart: int, blush: int, pop: int) -> bool:
+    """
+    Check weather interviewee lie or not
+
+    Attributes
+    -----------
+    resp
+        Respiration (measured in BPM, normally around 12-16 breaths per minute)
+    heart
+        Respiration (measured in BPM, normally around 12-16 breaths per minute)
+    blush
+        Blushing level (categorical, 6 possible levels)
+    pop
+        Pupillary dilation (current pupil size, 2 to 8 mm)
+
+    return value
+    -----------
+    Answer on question
+    """
     score = 0
     if not 12 <= resp <= 16:
         score += 1
@@ -13,7 +31,14 @@ def is_it_truth(resp, heart, blush, pop):
 
     return False if score >= 2 else True
 
-def get_int(minlim, maxlim):
+def get_int(minlim: int, maxlim: int) -> int:
+    """
+    Trying to get the value between minlim and maxlim in loop.
+    Nums can be negative. 
+    If minlim more then maxlim raise ValueError
+    """
+    if minlim >= maxlim:
+        raise ValueError("minlim should be less then maxlim")
     while True:
         wrong_input_ans = "Wrong input. Try again"
         got_in = input()
@@ -28,11 +53,26 @@ def get_int(minlim, maxlim):
     return got_in
 
 def get_question_list(filename):
+    "Get list from file. File must be json."
     with open(filename) as f:
         questions_list = json.load(f)
     return questions_list
 
-def print_survay(filename, ask_for_state):
+def print_survay(filename: str, ask_for_state: bool) -> str:
+    """
+    Main part of program. 
+
+    Attributes
+    ---------
+    filename
+        The name of file with questions
+    ask_for_state
+        Weather or not programm will check health parameters to determinate do interviewee lie
+
+    Return
+    ---------
+    Answer on question
+    """
     questions_list = get_question_list(filename)
     questions_list = random.sample(questions_list, 10)
     answer_list = [0.5]
