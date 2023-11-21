@@ -69,8 +69,12 @@ def main():
     ask_for_state = args.ask_for_state
     try:
         print(print_survay(question_file, ask_for_state))
-    except FileNotFoundError as e:
+    except FileNotFoundError:
         print("File not found")
+    except json.decoder.JSONDecodeError:
+        print("Json file are corrupted. Are you sure that's json?")
+    except KeyboardInterrupt:
+        print("bye!!")
 
 if __name__ == "__main__":
     main()
