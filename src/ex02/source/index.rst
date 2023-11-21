@@ -3,15 +3,18 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to vk test's documentation!
-===================================
+Welcome to vk test's documentation! Documentation was made by ohaggard
+======================================================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+.. image:: _static/my_mood.png
+   :scale: 100 %
 
-Indices and tables
+
+Links
 ==================
 
 * :ref:`genindex`
