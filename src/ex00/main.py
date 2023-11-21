@@ -1,6 +1,6 @@
-import argparse, random, json
+import argparse, random, json, logging
 
-def is_a_lie(resp, heart, blush, pop):
+def is_it_truth(resp, heart, blush, pop):
     score = 0
     if not 12 <= resp <= 16:
         score += 1
@@ -10,15 +10,14 @@ def is_a_lie(resp, heart, blush, pop):
         score += 1
     if not 2 <= pop <= 8:
         score += 1
-    if score >= 2:
-        return True
-    return False
+
+    return False if score >= 2 else True
 
 def get_int(minlim, maxlim):
     while True:
         wrong_input_ans = "Wrong input. Try again"
         got_in = input()
-        if not got_in.isdigit():
+        if not got_in.replace("-", "").isdecimal():
             print(wrong_input_ans)
             continue
         got_in = int(got_in)
@@ -28,17 +27,15 @@ def get_int(minlim, maxlim):
         break
     return got_in
 
+def get_question_list(filename):
+    with open(filename) as f:
+        questions_list = json.load(f)
+    return questions_list
+
 def print_survay(filename, ask_for_state):
-
-    try:
-        with open(filename) as f:
-            questions_list = json.load(f)
-    except FileNotFoundError as e:
-        print("File not found")
-        return None
-
+    questions_list = get_question_list(filename)
     questions_list = random.sample(questions_list, 10)
-    answer_list = []
+    answer_list = [0.5]
     for que in questions_list:
         print(que["text"])
         i = 1
@@ -47,20 +44,19 @@ def print_survay(filename, ask_for_state):
             i += 1
         print()
         curans = get_int(1, len(que["options"])) - 1
+        print(f"Just got ans {curans + 1}")
         if ask_for_state:
             print("\nEnter resperation, heart rate, blushing level and pupillary dilation")
-            curansstate = [get_int(0, 9999) for _ in range(4)]
-            if not is_a_lie(*curansstate):
+            curansstate = [get_int(0, 500) for _ in range(4)]
+            if is_it_truth(*curansstate):
                 answer_list.append(que["coefficients"][curans])
         else:
             answer_list.append(que["coefficients"][curans])
         
     mid = sum(answer_list) / len(answer_list)
-    return True if mid <= 0.5 else False
+    return "He is a robot" if mid <= 0.5 else "He is not a robot"
 
-
-
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-f", "--question-file")
     parser.add_argument("-a", "--ask-for-state", action="store_false")
@@ -71,7 +67,13 @@ if __name__ == "__main__":
     if args.question_file:
         question_file = args.question_file
     ask_for_state = args.ask_for_state
+    try:
+        print(print_survay(question_file, ask_for_state))
+    except FileNotFoundError as e:
+        print("File not found")
 
-    print(print_survay(question_file, ask_for_state))
+if __name__ == "__main__":
+    main()
+
 
     
